@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Cưới - Đức Thông & Thu Trang</title>
+
+    <!-- Google Fonts - Matching huanloanwedding.com -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&family=Prata&family=Philosopher:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Wishes Sidebar -->
+    <div class="wishes-sidebar" id="wishesSidebar">
+        <div class="sidebar-wishes-list" id="sidebarWishesList">
+            <div class="sidebar-wish-item">
+                <span class="wish-icon"><i class="fas fa-heart"></i></span>
+                <div class="wish-text">
+                    <strong>Nguyễn Văn A:</strong> Chúc hai bạn trăm năm hạnh phúc, cháu con đầy đàn
+                </div>
+            </div>
+            <div class="sidebar-wish-item">
+                <span class="wish-icon"><i class="fas fa-heart"></i></span>
+                <div class="wish-text">
+                    <strong>Trần Thị B:</strong> Happy Wedding! Chúc anh chị hạnh phúc mãi mãi
+                </div>
+            </div>
+            <div class="sidebar-wish-item">
+                <span class="wish-icon"><i class="fas fa-heart"></i></span>
+                <div class="wish-text">
+                    <strong>Lê Văn C:</strong> Chúc mừng hạnh phúc!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Player - Vinyl Disc -->
+    <div class="music-player" id="musicPlayer">
+        <div class="vinyl-disc" id="musicBtn">
+            <div class="vinyl-grooves"></div>
+            <div class="vinyl-label">
+                <img src="images/couple-small.jpg" alt="Couple" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=100'">
+            </div>
+            <div class="vinyl-hole"></div>
+        </div>
+        <div class="play-indicator" id="playIndicator">
+            <i class="fas fa-play"></i>
+        </div>
+        <audio id="bgMusic" loop>
+            <source src="images/music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- Back to Top & Menu -->
+    <div class="floating-buttons">
+        <button class="float-btn" id="backToTop">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        <button class="float-btn menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" id="navMenu">
+        <a href="#home"><i class="fas fa-home"></i> Trang chủ</a>
+        <a href="#couple"><i class="fas fa-heart"></i> Cô dâu & Chú rể</a>
+        <a href="#event"><i class="fas fa-calendar"></i> Sự kiện</a>
+        <a href="#countdown"><i class="fas fa-hourglass-half"></i> Countdown</a>
+        <a href="#gallery"><i class="fas fa-images"></i> Album</a>
+        <a href="#wishes"><i class="fas fa-comment"></i> Lời chúc</a>
+        <a href="#gift"><i class="fas fa-gift"></i> Mừng cưới</a>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg">
+            <!-- Ảnh ngang cho desktop -->
+            <img class="hero-img-desktop" src="images/hero-desktop.jpg" alt="Wedding">
+            <!-- Ảnh dọc cho mobile -->
+            <img class="hero-img-mobile" src="images/hero-mobile.jpg" alt="Wedding">
+        </div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <p class="save-the-date" data-aos="fade-up">SAVE THE DATE</p>
+            <p class="wedding-date-hero" data-aos="fade-up" data-aos-delay="100">22.03.2026</p>
+            <div class="couple-names-hero" data-aos="fade-up" data-aos-delay="200">
+                <span class="name">Đức Thông</span>
+                <span class="amp">&</span>
+                <span class="name">Thu Trang</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Couple - NO BACKGROUND -->
+    <section class="couple-section-v2 no-bg" id="couple">
+        <!-- Decorative Hearts -->
+        <div class="deco-hearts">
+            <span class="deco-heart" style="top: 10%; left: 5%;"><i class="fas fa-heart"></i></span>
+            <span class="deco-heart" style="top: 15%; right: 8%;"><i class="fas fa-heart"></i></span>
+            <span class="deco-heart" style="top: 40%; left: 3%;"><i class="fas fa-heart"></i></span>
+            <span class="deco-heart" style="top: 60%; right: 5%;"><i class="fas fa-heart"></i></span>
+            <span class="deco-heart" style="bottom: 20%; left: 8%;"><i class="fas fa-heart"></i></span>
+            <span class="deco-heart" style="bottom: 15%; right: 10%;"><i class="fas fa-heart"></i></span>
+        </div>
+
+        <div class="container">
+            <!-- Quote -->
+            <div class="couple-quote" data-aos="fade-up">
+                <p class="script">Hôn nhân là chuyện cả đời</p>
+                <p class="script">Yêu người vừa ý cưới người mình thương</p>
+            </div>
+
+            <!-- Title -->
+            <h2 class="couple-main-title" data-aos="fade-up">TRÂN TRỌNG THÔNG BÁO LỄ THÀNH HÔN</h2>
+
+            <!-- Family Info Row -->
+            <div class="family-row" data-aos="fade-up">
+                <div class="family-col">
+                    <h4 class="family-label">NHÀ TRAI</h4>
+                    <p><strong>Ông. Nguyễn Đức Thảo</strong></p>
+                    <p><strong>Bà. Lê Thị Mười</strong></p>
+                </div>
+                                <div class="family-col">
+                    <h4 class="family-label">NHÀ GÁI</h4>
+                    <p>Ông. <strong>Nguyễn Thanh Bình</strong></p>
+                    <p>Bà. <strong>Đỗ Thị Tuấn Anh</strong></p>
+                </div>
+            </div>
+
+            <!-- Couple Names Row -->
+            <div class="couple-names-row" data-aos="fade-up">
+                <div class="couple-name-item">
+                    <span class="couple-role">Chú Rể</span>
+                    <h3 class="couple-card-name script">Đức Thông</h3>
+                </div>
+                <div class="couple-heart">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <div class="couple-name-item">
+                    <span class="couple-role">Cô Dâu</span>
+                    <h3 class="couple-card-name script">Thu Trang</h3>
+                </div>
+            </div>
+
+            <!-- Couple Images Row -->
+            <div class="couple-images-row" data-aos="fade-up">
+                <div class="couple-card-image">
+                    <img src="images/groom.jpg" alt="Chú Rể" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400'">
+                </div>
+                <div class="couple-card-image">
+                    <img src="images/bride.jpg" alt="Cô Dâu" onerror="this.src='https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Wedding Invitation - WITH BACKGROUND -->
+    <section class="event-section has-bg" id="event">
+        <div class="section-bg">
+            <!-- Ảnh ngang cho desktop -->
+            <img class="hero-img-desktop" src="images/hero-desktop.jpg" alt="Wedding">
+            <!-- Ảnh dọc cho mobile -->
+            <img class="hero-img-mobile" src="images/hero-mobile.jpg" alt="Wedding">
+        </div>
+        <div class="section-overlay dark"></div>
+        <div class="container">
+            <div class="invitation-card-v2" data-aos="fade-up">
+                <!-- Floral decorations -->
+                <div class="floral-corner top-left"></div>
+                <div class="floral-corner top-right"></div>
+                <div class="floral-corner bottom-left"></div>
+                <div class="floral-corner bottom-right"></div>
+
+                <!-- Header -->
+                <div class="inv-header">
+                    <h2 class="inv-title">TRÂN TRỌNG KÍNH MỜI</h2>
+                </div>
+
+                <!-- Guest Name -->
+                <div class="inv-guest">
+                    <!-- <p class="inv-guest-label">Trân trọng kính mời</p> -->
+                    <p class="guest-name inv-guest-name">Quý khách</p>
+                </div>
+
+                <!-- Invitation Text -->
+                <p class="inv-text">Tới dự bữa tiệc thân mật mừng hạnh phúc cùng gia đình chúng tôi</p>
+
+                <!-- Events Timeline -->
+                <div class="inv-events">
+                    <!-- Tiệc Cưới Nhà Trai -->
+                    <div class="inv-event-item" data-aos="fade-up">
+                        <div class="inv-event-label">
+                            <span>TIỆC CƯỚI NHÀ TRAI</span>
+                        </div>
+                        <div class="inv-event-line"></div>
+                        <div class="inv-event-details">
+                            <p class="inv-event-time">16h30 - Thứ Bảy</p>
+                            <p class="inv-event-date">21.03.2026</p>
+                            <p class="inv-event-lunar">( Tức ngày 03 Tháng 02 Năm Bính Ngọ )</p>
+                        </div>
+                    </div>
+
+                    <!-- Lễ Thành Hôn -->
+                    <div class="inv-event-item" data-aos="fade-up" data-aos-delay="100">
+                        <div class="inv-event-label">
+                            <span>LỄ THÀNH HÔN</span>
+                        </div>
+                        <div class="inv-event-line"></div>
+                        <div class="inv-event-details">
+                            <p class="inv-event-time">10h00 - Chủ Nhật</p>
+                            <p class="inv-event-date">22.03.2026</p>
+                            <p class="inv-event-lunar">( Tức ngày 04 Tháng 02 Năm Bính Ngọ )</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location Box -->
+                <div class="inv-location" data-aos="fade-up">
+                    <div class="inv-location-inner">
+                        <p class="inv-location-title">TẠI: TƯ GIA NHÀ TRAI</p>
+                        <p class="inv-location-address">Số nhà 52, ngõ 55 Hoa Diêm</p>
+                        <p class="inv-location-address">TDP. Mai Diêm, xã Thái Thụy, tỉnh Hưng Yên</p>
+                        <a href="https://maps.google.com/?q=Số+nhà+52,+ngõ+55+Hoa+Diêm,+TDP.+Mai+Diêm,+xã+Thái+Thụy,+tỉnh+Hưng+Yên" class="inv-map-btn" target="_blank">
+                            XEM CHỈ ĐƯỜNG
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Calendar & Countdown - NO BACKGROUND -->
+    <section class="calendar-countdown-section no-bg" id="countdown">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title script">Save The Date</h2>
+            </div>
+
+            <div class="calendar-countdown-wrapper">
+                <!-- Calendar -->
+                <div class="calendar-widget" data-aos="fade-up">
+                    <div class="calendar-header">
+                        <div class="calendar-photo">
+                            <img src="images/couple-small.jpg" alt="Couple" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=100'">
+                        </div>
+                        <div class="calendar-month">
+                            <span class="month-name script">March</span>
+                            <span class="year">03/2026</span>
+                        </div>
+                    </div>
+                    <div class="calendar-body">
+                        <div class="calendar-weekdays">
+                            <span>CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+                        </div>
+                        <div class="calendar-days">
+                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
+                            <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
+                            <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span class="wedding-day">21</span>
+                            <span class="wedding-day main">22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
+                            <span>29</span><span>30</span><span>31</span><span></span><span></span><span></span><span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Countdown -->
+                <div class="countdown-box" data-aos="fade-up" data-aos-delay="100">
+                    <div class="countdown-wrapper">
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="days">00</span>
+                            <span class="countdown-label">Ngày</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="hours">00</span>
+                            <span class="countdown-label">Giờ</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="minutes">00</span>
+                            <span class="countdown-label">Phút</span>
+                        </div>
+                        <div class="countdown-item">
+                            <span class="countdown-number" id="seconds">00</span>
+                            <span class="countdown-label">Giây</span>
+                        </div>
+                    </div>
+                    <p class="countdown-text">Đếm ngược đến ngày trọng đại</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Gallery -->
+    <section class="gallery-section" id="gallery">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title script">Album Ảnh Cưới</h2>
+            </div>
+
+            <div class="gallery-grid" data-aos="fade-up">
+                <div class="gallery-item" onclick="openLightbox(0)">
+                    <img src="images/gallery-1.jpg" alt="Gallery 1" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=400'">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(1)">
+                    <img src="images/gallery-2.jpg" alt="Gallery 2" onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400'">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(2)">
+                    <img src="images/gallery-3.jpg" alt="Gallery 3" onerror="this.src='https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=400'">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(3)">
+                    <img src="images/gallery-4.jpg" alt="Gallery 4" onerror="this.src='https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=400'">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(4)">
+                    <img src="images/gallery-5.jpg" alt="Gallery 5" onerror="this.src='https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=400'">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(5)">
+                    <img src="images/gallery-6.jpg" alt="Gallery 6" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+            <button class="lightbox-prev" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+            <button class="lightbox-next" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+            <div class="lightbox-content">
+                <img src="" alt="" id="lightboxImg">
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Wishes -->
+    <section class="wishes-section" id="wishes">
+        <div class="section-bg">
+            <img src="images/hero-bg.jpg" alt="Background" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=1920'">
+        </div>
+        <div class="section-overlay dark"></div>
+
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title script white">Sổ Lưu Bút</h2>
+                <p class="white">Gửi lời chúc đến cô dâu & chú rể</p>
+            </div>
+
+            <div class="wishes-wrapper">
+                <div class="wish-form-container" data-aos="fade-up">
+                    <form class="wish-form" id="wishForm">
+                        <div class="form-group">
+                            <input type="text" id="wishName" placeholder="Họ và tên của bạn" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="wishMessage" placeholder="Lời chúc của bạn..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Gửi lời chúc
+                        </button>
+                    </form>
+                </div>
+
+                <div class="wishes-list" data-aos="fade-up" id="wishesList">
+                    <div class="wish-item">
+                        <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                        <div class="wish-content">
+                            <h4>Nguyễn Văn A</h4>
+                            <p>Chúc hai bạn trăm năm hạnh phúc!</p>
+                        </div>
+                    </div>
+                    <div class="wish-item">
+                        <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                        <div class="wish-content">
+                            <h4>Trần Thị B</h4>
+                            <p>Happy Wedding! Hạnh phúc mãi mãi nhé!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 8: Gift -->
+    <section class="gift-section" id="gift">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title script">Mừng Cưới</h2>
+                <p>Sự hiện diện của bạn là món quà quý giá nhất</p>
+            </div>
+
+            <div class="gift-cards" data-aos="fade-up">
+                <div class="gift-card">
+                    <div class="gift-icon"><i class="fas fa-male"></i></div>
+                    <h3>Chú Rể</h3>
+                    <div class="qr-code">
+                        <img src="images/qr-groom.jpg" alt="QR Chú Rể" onerror="this.src='https://via.placeholder.com/180x180/fff/333?text=QR+Code'">
+                    </div>
+                    <div class="bank-info">
+                        <p class="bank-name">Ngân hàng ABC</p>
+                        <p class="account-number">
+                            <span id="groomAccount">1234567890</span>
+                            <button class="copy-btn" onclick="copyToClipboard('groomAccount')"><i class="fas fa-copy"></i></button>
+                        </p>
+                        <p class="account-name">NGUYEN VAN A</p>
+                    </div>
+                </div>
+
+                <div class="gift-card">
+                    <div class="gift-icon"><i class="fas fa-female"></i></div>
+                    <h3>Cô Dâu</h3>
+                    <div class="qr-code">
+                        <img src="images/qr-bride.jpg" alt="QR Cô Dâu" onerror="this.src='https://via.placeholder.com/180x180/fff/333?text=QR+Code'">
+                    </div>
+                    <div class="bank-info">
+                        <p class="bank-name">Ngân hàng XYZ</p>
+                        <p class="account-number">
+                            <span id="brideAccount">0987654321</span>
+                            <button class="copy-btn" onclick="copyToClipboard('brideAccount')"><i class="fas fa-copy"></i></button>
+                        </p>
+                        <p class="account-name">LE THI B</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="thank-you script">Thank You</p>
+            <div class="footer-couple">
+                <span class="script">Đức Thông</span>
+                <i class="fas fa-heart"></i>
+                <span class="script">Thu Trang</span>
+            </div>
+            <p class="footer-date">08.02.2026</p>
+        </div>
+    </footer>
+
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
