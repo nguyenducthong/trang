@@ -2,6 +2,17 @@
    WEDDING INVITATION - JAVASCRIPT
    ========================================== */
 
+// ===================================
+// CẤU HÌNH GOOGLE SHEETS
+// ===================================
+const CONFIG = {
+    googleSheets: {
+        enabled: true,
+        // Thay URL này bằng URL của Google Apps Script Web App của bạn
+        apiUrl: 'https://script.google.com/macros/s/AKfycbz9sxVbwsTS4WNufMhduGkj1IIn9sQM58wyt8ChP17hFJwLISdEsFzuu6Yh90iF2f_v2Q/exec'
+    }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
     initGuestName();
     initFloatingHearts();
@@ -59,11 +70,14 @@ function createHeart(container) {
 
     const size = Math.random() * 15 + 10;
     const left = Math.random() * 100;
-    const delay = Math.random() * 8;
+    const delay = Math.random() * 5;
     const duration = Math.random() * 5 + 8;
+    // Vị trí Y ban đầu ngẫu nhiên để trái tim phân bố đều khi mở trang
+    const startY = Math.random() * 100;
 
     heart.style.cssText = `
         left: ${left}%;
+        top: ${startY}%;
         font-size: ${size}px;
         animation-delay: ${delay}s;
         animation-duration: ${duration}s;
@@ -77,7 +91,7 @@ function createHeart(container) {
    ========================================== */
 function initCountdown() {
     // Set your wedding date here
-    const weddingDate = new Date(2026, 2, 22, 9, 0, 0).getTime(); // March 22, 2026
+    const weddingDate = new Date(2026, 2, 22, 10, 0, 0).getTime(); // March 22, 2026 - 10:00 AM
 
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
@@ -297,68 +311,183 @@ function changeSlide(direction) {
 }
 
 /* ==========================================
-   WISH FORM
+   WISH FORM - GỬI VÀ LOAD TỪ GOOGLE SHEETS
    ========================================== */
 function initWishForm() {
     const form = document.getElementById('wishForm');
 
+    // Load lời chúc từ Google Sheets khi trang load
+    loadWishesFromGoogleSheets();
+
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const name = document.getElementById('wishName').value.trim();
             const message = document.getElementById('wishMessage').value.trim();
+            const attendance = form.querySelector('input[name="attendance"]:checked')?.value || 'yes';
 
             if (!name || !message) {
                 showToast('Vui lòng nhập đầy đủ thông tin!');
                 return;
             }
 
-            addWish(name, message);
-            addSidebarWish(name, message);
-            form.reset();
-            showToast('Cảm ơn bạn đã gửi lời chúc!');
+            // Hiện loading
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Đang gửi...';
+            submitBtn.disabled = true;
+
+            // Gửi lên Google Sheets
+            const success = await sendToGoogleSheets({
+                type: 'wish',
+                name: name,
+                message: message,
+                attendance: attendance
+            });
+
+            if (success) {
+                // Thêm vào DOM
+                addWishToDOM({
+                    name: name,
+                    message: message,
+                    date: new Date().toLocaleDateString('vi-VN')
+                }, true);
+
+                form.reset();
+                showToast('Cảm ơn bạn đã gửi lời chúc!');
+            } else {
+                showToast('Có lỗi xảy ra, vui lòng thử lại!');
+            }
+
+            // Reset button
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
         });
     }
 }
 
-function addWish(name, message) {
+// Load lời chúc từ Google Sheets
+async function loadWishesFromGoogleSheets() {
     const wishesList = document.getElementById('wishesList');
+    const wishesListInner = document.getElementById('wishesListInner');
     if (!wishesList) return;
+
+    // Xóa lời chúc mẫu
+    if (wishesListInner) {
+        wishesListInner.innerHTML = '<div class="loading-wishes"><i class="fas fa-spinner fa-spin"></i> Đang tải...</div>';
+    }
+
+    if (!CONFIG.googleSheets.enabled || CONFIG.googleSheets.apiUrl.includes('YOUR_SCRIPT_ID')) {
+        // Giữ nguyên lời chúc mẫu nếu chưa cấu hình Google Sheets
+        console.log('Google Sheets chưa được cấu hình - giữ lời chúc mẫu');
+        return;
+    }
+
+    try {
+        const url = `${CONFIG.googleSheets.apiUrl}?action=getWishes`;
+        const response = await fetch(url, {
+            method: 'GET',
+            redirect: 'follow'
+        });
+
+        const result = await response.json();
+
+        if (wishesListInner) {
+            wishesListInner.innerHTML = '';
+        }
+
+        if (result.success && result.wishes && result.wishes.length > 0) {
+            result.wishes.forEach(wish => {
+                addWishToDOM(wish, false);
+            });
+            // Duplicate content for seamless auto-scroll loop
+            duplicateWishesForLoop();
+        } else {
+            if (wishesListInner) {
+                wishesListInner.innerHTML = '<p style="text-align:center; color: rgba(255,255,255,0.7);">Chưa có lời chúc nào. Hãy là người đầu tiên!</p>';
+            }
+        }
+    } catch (error) {
+        console.error('Error loading wishes:', error);
+        if (wishesListInner) {
+            wishesListInner.innerHTML = '<p style="text-align:center; color: rgba(255,255,255,0.7);">Không thể tải lời chúc</p>';
+        }
+    }
+}
+
+// Duplicate wishes for seamless auto-scroll loop
+function duplicateWishesForLoop() {
+    const wishesListInner = document.getElementById('wishesListInner');
+    if (!wishesListInner) return;
+
+    const originalItems = wishesListInner.querySelectorAll('.wish-item');
+    originalItems.forEach(item => {
+        const clone = item.cloneNode(true);
+        wishesListInner.appendChild(clone);
+    });
+}
+
+// Thêm lời chúc vào DOM
+function addWishToDOM(wish, prepend = false) {
+    const wishesListInner = document.getElementById('wishesListInner');
+    if (!wishesListInner) return;
 
     const wishItem = document.createElement('div');
     wishItem.className = 'wish-item';
     wishItem.innerHTML = `
         <div class="wish-avatar"><i class="fas fa-heart"></i></div>
         <div class="wish-content">
-            <h4>${escapeHtml(name)}</h4>
-            <p>${escapeHtml(message)}</p>
+            <h4>${escapeHtml(wish.name)}</h4>
+            <p>${escapeHtml(wish.message)}</p>
+            ${wish.date ? `<span class="wish-date">${wish.date}</span>` : ''}
         </div>
     `;
 
-    wishesList.insertBefore(wishItem, wishesList.firstChild);
-}
-
-function addSidebarWish(name, message) {
-    const sidebarList = document.getElementById('sidebarWishesList');
-    if (!sidebarList) return;
-
-    const wishItem = document.createElement('div');
-    wishItem.className = 'sidebar-wish-item';
-    wishItem.innerHTML = `
-        <span class="wish-icon"><i class="fas fa-heart"></i></span>
-        <div class="wish-text">
-            <strong>${escapeHtml(name)}:</strong> ${escapeHtml(message)}
-        </div>
-    `;
-
-    sidebarList.insertBefore(wishItem, sidebarList.firstChild);
-
-    // Keep only 5 items
-    while (sidebarList.children.length > 5) {
-        sidebarList.removeChild(sidebarList.lastChild);
+    if (prepend) {
+        wishesListInner.insertBefore(wishItem, wishesListInner.firstChild);
+    } else {
+        wishesListInner.appendChild(wishItem);
     }
 }
+
+
+// ===================================
+// GOOGLE SHEETS API
+// ===================================
+async function sendToGoogleSheets(data) {
+    if (!CONFIG.googleSheets || !CONFIG.googleSheets.enabled || !CONFIG.googleSheets.apiUrl) {
+        console.log('Google Sheets not enabled or no API URL');
+        return false;
+    }
+
+    try {
+        // Sử dụng URL parameters thay vì JSON body để tương thích tốt hơn
+        const params = new URLSearchParams(data).toString();
+        const url = `${CONFIG.googleSheets.apiUrl}?${params}`;
+
+        // Sử dụng phương pháp fetch với redirect: 'follow'
+        const response = await fetch(url, {
+            method: 'GET',
+            redirect: 'follow'
+        });
+
+        console.log('Google Sheets response:', response.status);
+        return true;
+    } catch (error) {
+        console.error('Error sending to Google Sheets:', error);
+        // Fallback: thử với image beacon (luôn hoạt động)
+        try {
+            const params = new URLSearchParams(data).toString();
+            const img = new Image();
+            img.src = `${CONFIG.googleSheets.apiUrl}?${params}`;
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+}
+
 
 /* ==========================================
    COPY TO CLIPBOARD

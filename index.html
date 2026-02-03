@@ -24,7 +24,7 @@
     <div class="floating-hearts" id="floatingHearts"></div>
 
     <!-- Wishes Sidebar -->
-    <div class="wishes-sidebar" id="wishesSidebar">
+    <!-- <div class="wishes-sidebar" id="wishesSidebar">
         <div class="sidebar-wishes-list" id="sidebarWishesList">
             <div class="sidebar-wish-item">
                 <span class="wish-icon"><i class="fas fa-heart"></i></span>
@@ -45,7 +45,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Music Player - Vinyl Disc -->
     <div class="music-player" id="musicPlayer">
@@ -235,7 +235,7 @@
                         <p class="inv-location-title">TẠI: TƯ GIA NHÀ TRAI</p>
                         <p class="inv-location-address">Số nhà 52, ngõ 55 Hoa Diêm</p>
                         <p class="inv-location-address">TDP. Mai Diêm, xã Thái Thụy, tỉnh Hưng Yên</p>
-                        <a href="https://maps.google.com/?q=Số+nhà+52,+ngõ+55+Hoa+Diêm,+TDP.+Mai+Diêm,+xã+Thái+Thụy,+tỉnh+Hưng+Yên" class="inv-map-btn" target="_blank">
+                        <a href="https://maps.app.goo.gl/heBcSBLwfc51MSUw9?g_st=ipc" class="inv-map-btn" target="_blank">
                             XEM CHỈ ĐƯỜNG
                         </a>
                     </div>
@@ -248,7 +248,7 @@
     <section class="calendar-countdown-section no-bg" id="countdown">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title script">Save The Date</h2>
+                <h2 class="section-title script">Wedding Countdown</h2>
             </div>
 
             <div class="calendar-countdown-wrapper">
@@ -259,20 +259,20 @@
                             <img src="images/couple-small.jpg" alt="Couple" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=100'">
                         </div>
                         <div class="calendar-month">
-                            <span class="month-name script">March</span>
-                            <span class="year">03/2026</span>
+                            <span class="month-name">THÁNG 3 - 2026</span>
                         </div>
                     </div>
                     <div class="calendar-body">
                         <div class="calendar-weekdays">
-                            <span>CN</span><span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span>
+                            <span>T2</span><span>T3</span><span>T4</span><span>T5</span><span>T6</span><span>T7</span><span>CN</span>
                         </div>
                         <div class="calendar-days">
-                            <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span>
-                            <span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span>
-                            <span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span class="wedding-day">21</span>
-                            <span class="wedding-day main">22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span>
-                            <span>29</span><span>30</span><span>31</span><span></span><span></span><span></span><span></span>
+                            <span></span><span></span><span></span><span></span><span></span><span></span><span>1</span>
+                            <span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span>
+                            <span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span>
+                            <span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span class="wedding-day" data-day="22">22</span>
+                            <span>23</span><span>24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span>
+                            <span>30</span><span>31</span><span></span><span></span><span></span><span></span><span></span>
                         </div>
                     </div>
                 </div>
@@ -303,11 +303,124 @@
         </div>
     </section>
 
-    <!-- Section 6: Gallery -->
+    <!-- Section 6: Wishes -->
+    <section class="wishes-section" id="wishes">
+        <div class="section-bg">
+            <!-- Ảnh ngang cho desktop -->
+            <img class="hero-img-desktop" src="images/hero-desktop.jpg" alt="Background">
+            <!-- Ảnh dọc cho mobile -->
+            <img class="hero-img-mobile" src="images/hero-mobile.jpg" alt="Background">
+        </div>
+        <div class="section-overlay dark"></div>
+
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title script white">Wedding Attending</h2>
+                <h5 class="white">Chúng tôi rất chờ đón sự kiện trọng đại này của cuộc đời. Xin vui lòng xác nhận sự tham dự của bạn trong tiệc cưới để chúng tôi có thể chuẩn bị đón tiếp chu đáo nhất! Trân trọng!</h5>
+            </div>
+
+            <div class="wishes-wrapper">
+                <div class="wish-form-container" data-aos="fade-up">
+                    <form class="wish-form" id="wishForm">
+                        <div class="form-group">
+                            <input type="text" id="wishName" placeholder="Họ và tên của bạn" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="wishMessage" placeholder="Gửi lời nhắn của bạn tới đôi uyên ương..." required></textarea>
+                        </div>
+                        <div class="form-group rsvp-options">
+                            <label class="rsvp-option">
+                                <input type="radio" name="attendance" value="yes" checked>
+                                <span class="radio-custom"></span>
+                                <span class="option-text">Mình sẽ tham dự</span>
+                            </label>
+                            <label class="rsvp-option">
+                                <input type="radio" name="attendance" value="no">
+                                <span class="radio-custom"></span>
+                                <span class="option-text">Thật tiếc mình bận mất rồi</span>
+                            </label>
+                            <label class="rsvp-option">
+                                <input type="radio" name="attendance" value="maybe">
+                                <span class="radio-custom"></span>
+                                <span class="option-text">Mình đang cân nhắc</span>
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Gửi lời nhắn và xác nhận
+                        </button>
+                    </form>
+                </div>
+
+                <div class="wishes-list" data-aos="fade-up" id="wishesList">
+                    <div class="wishes-list-inner" id="wishesListInner">
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Nguyễn Văn A</h4>
+                                <p>Chúc hai bạn trăm năm hạnh phúc!</p>
+                            </div>
+                        </div>
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Trần Thị B</h4>
+                                <p>Happy Wedding! Hạnh phúc mãi mãi nhé!</p>
+                            </div>
+                        </div>
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Lê Văn C</h4>
+                                <p>Chúc mừng hạnh phúc! Mãi bên nhau nhé!</p>
+                            </div>
+                        </div>
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Phạm Thị D</h4>
+                                <p>Tình yêu đẹp nhất là khi có nhau! Chúc mừng!</p>
+                            </div>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Nguyễn Văn A</h4>
+                                <p>Chúc hai bạn trăm năm hạnh phúc!</p>
+                            </div>
+                        </div>
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Trần Thị B</h4>
+                                <p>Happy Wedding! Hạnh phúc mãi mãi nhé!</p>
+                            </div>
+                        </div>
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Lê Văn C</h4>
+                                <p>Chúc mừng hạnh phúc! Mãi bên nhau nhé!</p>
+                            </div>
+                        </div>
+                        <div class="wish-item">
+                            <div class="wish-avatar"><i class="fas fa-heart"></i></div>
+                            <div class="wish-content">
+                                <h4>Phạm Thị D</h4>
+                                <p>Tình yêu đẹp nhất là khi có nhau! Chúc mừng!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Gallery -->
     <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title script">Album Ảnh Cưới</h2>
+                <h2 class="section-title script">Album of Love</h2>
             </div>
 
             <div class="gallery-grid" data-aos="fade-up">
@@ -343,98 +456,6 @@
         </div>
     </section>
 
-    <!-- Section 7: Wishes -->
-    <section class="wishes-section" id="wishes">
-        <div class="section-bg">
-            <img src="images/hero-bg.jpg" alt="Background" onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=1920'">
-        </div>
-        <div class="section-overlay dark"></div>
-
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title script white">Sổ Lưu Bút</h2>
-                <p class="white">Gửi lời chúc đến cô dâu & chú rể</p>
-            </div>
-
-            <div class="wishes-wrapper">
-                <div class="wish-form-container" data-aos="fade-up">
-                    <form class="wish-form" id="wishForm">
-                        <div class="form-group">
-                            <input type="text" id="wishName" placeholder="Họ và tên của bạn" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="wishMessage" placeholder="Lời chúc của bạn..." required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">
-                            <i class="fas fa-paper-plane"></i> Gửi lời chúc
-                        </button>
-                    </form>
-                </div>
-
-                <div class="wishes-list" data-aos="fade-up" id="wishesList">
-                    <div class="wish-item">
-                        <div class="wish-avatar"><i class="fas fa-heart"></i></div>
-                        <div class="wish-content">
-                            <h4>Nguyễn Văn A</h4>
-                            <p>Chúc hai bạn trăm năm hạnh phúc!</p>
-                        </div>
-                    </div>
-                    <div class="wish-item">
-                        <div class="wish-avatar"><i class="fas fa-heart"></i></div>
-                        <div class="wish-content">
-                            <h4>Trần Thị B</h4>
-                            <p>Happy Wedding! Hạnh phúc mãi mãi nhé!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section 8: Gift -->
-    <section class="gift-section" id="gift">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title script">Mừng Cưới</h2>
-                <p>Sự hiện diện của bạn là món quà quý giá nhất</p>
-            </div>
-
-            <div class="gift-cards" data-aos="fade-up">
-                <div class="gift-card">
-                    <div class="gift-icon"><i class="fas fa-male"></i></div>
-                    <h3>Chú Rể</h3>
-                    <div class="qr-code">
-                        <img src="images/qr-groom.jpg" alt="QR Chú Rể" onerror="this.src='https://via.placeholder.com/180x180/fff/333?text=QR+Code'">
-                    </div>
-                    <div class="bank-info">
-                        <p class="bank-name">Ngân hàng ABC</p>
-                        <p class="account-number">
-                            <span id="groomAccount">1234567890</span>
-                            <button class="copy-btn" onclick="copyToClipboard('groomAccount')"><i class="fas fa-copy"></i></button>
-                        </p>
-                        <p class="account-name">NGUYEN VAN A</p>
-                    </div>
-                </div>
-
-                <div class="gift-card">
-                    <div class="gift-icon"><i class="fas fa-female"></i></div>
-                    <h3>Cô Dâu</h3>
-                    <div class="qr-code">
-                        <img src="images/qr-bride.jpg" alt="QR Cô Dâu" onerror="this.src='https://via.placeholder.com/180x180/fff/333?text=QR+Code'">
-                    </div>
-                    <div class="bank-info">
-                        <p class="bank-name">Ngân hàng XYZ</p>
-                        <p class="account-number">
-                            <span id="brideAccount">0987654321</span>
-                            <button class="copy-btn" onclick="copyToClipboard('brideAccount')"><i class="fas fa-copy"></i></button>
-                        </p>
-                        <p class="account-name">LE THI B</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
@@ -444,7 +465,7 @@
                 <i class="fas fa-heart"></i>
                 <span class="script">Thu Trang</span>
             </div>
-            <p class="footer-date">08.02.2026</p>
+            <p class="footer-date">22.03.2026</p>
         </div>
     </footer>
 
