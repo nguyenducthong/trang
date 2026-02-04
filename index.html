@@ -69,13 +69,13 @@
         <button class="float-btn" id="backToTop">
             <i class="fas fa-arrow-up"></i>
         </button>
-        <button class="float-btn menu-btn" id="menuBtn">
+        <!-- <button class="float-btn menu-btn" id="menuBtn">
             <i class="fas fa-bars"></i>
-        </button>
+        </button> -->
     </div>
 
     <!-- Navigation Menu -->
-    <nav class="nav-menu" id="navMenu">
+    <!-- <nav class="nav-menu" id="navMenu">
         <a href="#home"><i class="fas fa-home"></i> Trang chủ</a>
         <a href="#couple"><i class="fas fa-heart"></i> Cô dâu & Chú rể</a>
         <a href="#event"><i class="fas fa-calendar"></i> Sự kiện</a>
@@ -83,7 +83,7 @@
         <a href="#gallery"><i class="fas fa-images"></i> Album</a>
         <a href="#wishes"><i class="fas fa-comment"></i> Lời chúc</a>
         <a href="#gift"><i class="fas fa-gift"></i> Mừng cưới</a>
-    </nav>
+    </nav> -->
 
     <!-- Section 1: Hero -->
     <section class="hero-section" id="home">
@@ -137,8 +137,8 @@
                 </div>
                                 <div class="family-col">
                     <h4 class="family-label">NHÀ GÁI</h4>
-                    <p>Ông. <strong>Nguyễn Thanh Bình</strong></p>
-                    <p>Bà. <strong>Đỗ Thị Tuấn Anh</strong></p>
+                    <p><strong>Ông. Nguyễn Thanh Bình</strong></p>
+                    <p><strong>Bà.  Đỗ Thị Tuấn Anh</strong></p>
                 </div>
             </div>
 
@@ -279,6 +279,7 @@
 
                 <!-- Countdown -->
                 <div class="countdown-box" data-aos="fade-up" data-aos-delay="100">
+                    <p class="countdown-text">We'll be sharing a home and a life together in</p>
                     <div class="countdown-wrapper">
                         <div class="countdown-item">
                             <span class="countdown-number" id="days">00</span>
@@ -297,7 +298,6 @@
                             <span class="countdown-label">Giây</span>
                         </div>
                     </div>
-                    <p class="countdown-text">Đếm ngược đến ngày trọng đại</p>
                 </div>
             </div>
         </div>
@@ -326,7 +326,7 @@
                             <input type="text" id="wishName" placeholder="Họ và tên của bạn" required>
                         </div>
                         <div class="form-group">
-                            <textarea id="wishMessage" placeholder="Gửi lời nhắn của bạn tới đôi uyên ương..." required></textarea>
+                            <textarea id="wishMessage" placeholder="Gửi lời nhắn của bạn tới chúng mình..." required></textarea>
                         </div>
                         <div class="form-group rsvp-options">
                             <label class="rsvp-option">
@@ -420,7 +420,7 @@
     <section class="gallery-section" id="gallery">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title script">Album of Love</h2>
+                <h2 class="section-title script">Our Memories</h2>
             </div>
 
             <div class="gallery-grid" data-aos="fade-up">
@@ -458,14 +458,17 @@
 
     <!-- Footer -->
     <footer class="footer">
+        <div class="footer-bg">
+            <!-- Ảnh ngang cho desktop -->
+            <img class="hero-img-desktop" src="images/footer-desktop.jpg" alt="Footer" onerror="this.src='images/hero-desktop.jpg'">
+            <!-- Ảnh dọc cho mobile -->
+            <img class="hero-img-mobile" src="images/footer-mobile.jpg" alt="Footer" onerror="this.src='images/hero-mobile.jpg'">
+        </div>
+        <div class="footer-overlay"></div>
         <div class="footer-content">
-            <p class="thank-you script">Thank You</p>
-            <div class="footer-couple">
-                <span class="script">Đức Thông</span>
-                <i class="fas fa-heart"></i>
-                <span class="script">Thu Trang</span>
-            </div>
-            <p class="footer-date">22.03.2026</p>
+            <p class="thank-you script">Thank You!</p>
+            <p class="footer-message">Chúng mình xin được gửi đến anh/chị/em/bạn chiếc thiệp cưới online thay một lời mời chân thành. Rất mong sự hiện diện của mọi người để cùng chung vui và chúc phúc cho chúng mình trong ngày trọng đại.</p>
+            
         </div>
     </footer>
 
