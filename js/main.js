@@ -8,12 +8,52 @@
 const CONFIG = {
     googleSheets: {
         enabled: true,
-        // Thay URL này bằng URL của Google Apps Script Web App của bạn
         apiUrl: 'https://script.google.com/macros/s/AKfycbz9sxVbwsTS4WNufMhduGkj1IIn9sQM58wyt8ChP17hFJwLISdEsFzuu6Yh90iF2f_v2Q/exec'
     }
 };
 
+// ===================================
+// CẤU HÌNH NHÀ TRAI / NHÀ GÁI
+// ===================================
+const SIDE_CONFIG = {
+    trai: {
+        event1Label: 'TIỆC CƯỚI NHÀ TRAI',
+        event1Time: '16h30 - Thứ Bảy',
+        event1Date: '21.03.2026',
+        event1Lunar: '( Tức ngày 03 Tháng 02 Năm Bính Ngọ )',
+        event2Label: 'LỄ THÀNH HÔN',
+        event2Time: '10h00 - Chủ Nhật',
+        event2Date: '22.03.2026',
+        event2Lunar: '( Tức ngày 04 Tháng 02 Năm Bính Ngọ )',
+        locationTitle: 'TẠI: TƯ GIA NHÀ TRAI',
+        locationAddr1: 'Số nhà 52, ngõ 55 Hoa Diêm',
+        locationAddr2: 'TDP. Mai Diêm, xã Thái Thụy, tỉnh Hưng Yên',
+        mapUrl: 'https://maps.app.goo.gl/heBcSBLwfc51MSUw9?g_st=ipc',
+        countdownDate: new Date(2026, 2, 22, 10, 0, 0),
+    },
+    gai: {
+        event1Label: 'TIỆC CƯỚI NHÀ GÁI',
+        event1Time: '16h00 - Thứ Bảy',
+        event1Date: '21.03.2026',
+        event1Lunar: '( Tức ngày 03 Tháng 02 Năm Bính Ngọ )',
+        event2Label: 'LỄ THÀNH HÔN',
+        event2Time: '10h00 - Chủ Nhật',
+        event2Date: '22.03.2026',
+        event2Lunar: '( Tức ngày 04 Tháng 02 Năm Bính Ngọ )',
+        locationTitle: 'TẠI: NHÀ VĂN HÓA THÔN NGỌC THAN',
+        locationAddr1: 'Nhà văn hóa thôn Ngọc Than',
+        locationAddr2: 'Xã Kiều Phú, TP. Hà Nội',
+        mapUrl: 'https://www.google.com/maps?q=XJVH+C2X+Nh%C3%A0+V%C4%83n+Ho%C3%A1+Th%C3%B4n+Ng%E1%BB%8Dc+Than,+L%C3%A0ng+ngh%E1%BB%81+m%E1%BB%99c+Ng%E1%BB%8Dc+Than,+Qu%E1%BB%91c+Oai,+H%C3%A0+N%E1%BB%99i&ftid=0x313451fc03d23ccb:0x246b4c40e908b5b6&entry=gps',
+        countdownDate: new Date(2026, 2, 22, 10, 0, 0),
+    }
+};
+
+// Biến global lưu config side hiện tại
+let currentSide = 'trai';
+let currentSideConfig = SIDE_CONFIG.trai;
+
 document.addEventListener('DOMContentLoaded', function() {
+    initSide();
     initGuestName();
     initFloatingHearts();
     initCountdown();
@@ -25,6 +65,34 @@ document.addEventListener('DOMContentLoaded', function() {
     initWishForm();
     initAOS();
 });
+
+/* ==========================================
+   CHUYỂN ĐỔI NHÀ TRAI / NHÀ GÁI
+   ========================================== */
+function initSide() {
+    const urlParams = new URLSearchParams(window.location.search);
+    currentSide = urlParams.get('side') || 'trai';
+    currentSideConfig = SIDE_CONFIG[currentSide] || SIDE_CONFIG['trai'];
+
+    const fields = [
+        'event1Label', 'event1Time', 'event1Date', 'event1Lunar',
+        'event2Label', 'event2Time', 'event2Date', 'event2Lunar',
+        'locationTitle', 'locationAddr1', 'locationAddr2'
+    ];
+
+    fields.forEach(function(id) {
+        const el = document.getElementById(id);
+        if (el && currentSideConfig[id]) {
+            el.textContent = currentSideConfig[id];
+        }
+    });
+
+    // Cập nhật link Google Maps
+    const mapLink = document.getElementById('mapLink');
+    if (mapLink && currentSideConfig.mapUrl) {
+        mapLink.href = currentSideConfig.mapUrl;
+    }
+}
 
 /* ==========================================
    GUEST NAME FROM URL
@@ -40,6 +108,17 @@ function initGuestName() {
             el.textContent = guestName;
             el.style.display = 'block';
         });
+
+        // Cập nhật footer message theo xưng hô của khách mời
+        const footerMsg = document.getElementById('footerMessage');
+        if (footerMsg) {
+            const nameLower = guestName.toLowerCase();
+            const prefixes = ['bạn', 'anh', 'chị', 'em'];
+            const matched = prefixes.find(p => nameLower.startsWith(p));
+            const greeting = matched || 'bạn';
+            const self = (matched === 'anh' || matched === 'chị') ? 'chúng em' : (matched === 'em' ? 'anh chị' : 'chúng mình');
+            footerMsg.textContent = `${self.charAt(0).toUpperCase() + self.slice(1)} xin được gửi đến ${greeting} chiếc thiệp cưới online thay một lời mời chân thành. Rất mong sự hiện diện của ${greeting} để cùng chung vui và chúc phúc cho ${self} trong ngày trọng đại.`;
+        }
     } else {
         // Ẩn hoặc hiển thị text mặc định nếu không có tên
         guestNameElements.forEach(el => {
@@ -90,8 +169,8 @@ function createHeart(container) {
    COUNTDOWN
    ========================================== */
 function initCountdown() {
-    // Set your wedding date here
-    const weddingDate = new Date(2026, 2, 22, 10, 0, 0).getTime(); // March 22, 2026 - 10:00 AM
+    // Lấy ngày cưới từ config side
+    const weddingDate = currentSideConfig.countdownDate.getTime();
 
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
@@ -339,11 +418,13 @@ function initWishForm() {
             submitBtn.disabled = true;
 
             // Gửi lên Google Sheets
+            console.log('[DEBUG] currentSide =', currentSide);
             const success = await sendToGoogleSheets({
                 type: 'wish',
                 name: name,
                 message: message,
-                attendance: attendance
+                attendance: attendance,
+                side: currentSide
             });
 
             if (success) {
@@ -456,6 +537,7 @@ function addWishToDOM(wish, prepend = false) {
 // GOOGLE SHEETS API
 // ===================================
 async function sendToGoogleSheets(data) {
+    console.log('[DEBUG] sendToGoogleSheets called, data:', JSON.stringify(data));
     if (!CONFIG.googleSheets || !CONFIG.googleSheets.enabled || !CONFIG.googleSheets.apiUrl) {
         console.log('Google Sheets not enabled or no API URL');
         return false;
@@ -465,6 +547,7 @@ async function sendToGoogleSheets(data) {
         // Sử dụng URL parameters thay vì JSON body để tương thích tốt hơn
         const params = new URLSearchParams(data).toString();
         const url = `${CONFIG.googleSheets.apiUrl}?${params}`;
+        console.log('Sending to Google Sheets:', url);
 
         // Sử dụng phương pháp fetch với redirect: 'follow'
         const response = await fetch(url, {

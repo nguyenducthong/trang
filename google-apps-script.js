@@ -34,13 +34,17 @@ function doPost(e) {
     Logger.log('Received data: ' + JSON.stringify(data));
     const sheet = SpreadsheetApp.getActiveSpreadsheet();
 
+    // Chuyển đổi side sang tiếng Việt
+    let sideText = 'Nhà trai';
+    if (data.side === 'gai') sideText = 'Nhà gái';
+
     if (data.type === 'rsvp') {
       // Lưu RSVP
       let rsvpSheet = sheet.getSheetByName('RSVP');
       if (!rsvpSheet) {
         // Tạo sheet nếu chưa có
         rsvpSheet = sheet.insertSheet('RSVP');
-        rsvpSheet.appendRow(['Thời gian', 'Họ tên', 'Số điện thoại', 'Số người', 'Sự kiện']);
+        rsvpSheet.appendRow(['Thời gian', 'Họ tên', 'Số điện thoại', 'Số người', 'Sự kiện', 'Khách mời của']);
       }
 
       rsvpSheet.appendRow([
@@ -48,7 +52,8 @@ function doPost(e) {
         data.name || '',
         data.phone || '',
         data.guests || '',
-        data.event || ''
+        data.event || '',
+        sideText
       ]);
 
       return createResponse({ success: true, message: 'RSVP saved!' });
@@ -60,7 +65,7 @@ function doPost(e) {
       if (!wishSheet) {
         // Tạo sheet nếu chưa có
         wishSheet = sheet.insertSheet('Wishes');
-        wishSheet.appendRow(['Thời gian', 'Họ tên', 'Lời chúc', 'Xác nhận tham dự']);
+        wishSheet.appendRow(['Thời gian', 'Họ tên', 'Lời chúc', 'Xác nhận tham dự', 'Khách mời của']);
       }
 
       // Chuyển đổi giá trị attendance sang tiếng Việt
@@ -72,7 +77,8 @@ function doPost(e) {
         new Date().toLocaleString('vi-VN'),
         data.name || '',
         data.message || '',
-        attendanceText
+        attendanceText,
+        sideText
       ]);
 
       return createResponse({ success: true, message: 'Wish saved!' });

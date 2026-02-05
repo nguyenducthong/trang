@@ -202,29 +202,29 @@
 
                 <!-- Events Timeline -->
                 <div class="inv-events">
-                    <!-- Tiệc Cưới Nhà Trai -->
+                    <!-- Tiệc Cưới -->
                     <div class="inv-event-item" data-aos="fade-up">
                         <div class="inv-event-label">
-                            <span>TIỆC CƯỚI NHÀ TRAI</span>
+                            <span id="event1Label">TIỆC CƯỚI NHÀ TRAI</span>
                         </div>
                         <div class="inv-event-line"></div>
                         <div class="inv-event-details">
-                            <p class="inv-event-time">16h30 - Thứ Bảy</p>
-                            <p class="inv-event-date">21.03.2026</p>
-                            <p class="inv-event-lunar">( Tức ngày 03 Tháng 02 Năm Bính Ngọ )</p>
+                            <p class="inv-event-time" id="event1Time">16h30 - Thứ Bảy</p>
+                            <p class="inv-event-date" id="event1Date">21.03.2026</p>
+                            <p class="inv-event-lunar" id="event1Lunar">( Tức ngày 03 Tháng 02 Năm Bính Ngọ )</p>
                         </div>
                     </div>
 
                     <!-- Lễ Thành Hôn -->
                     <div class="inv-event-item" data-aos="fade-up" data-aos-delay="100">
                         <div class="inv-event-label">
-                            <span>LỄ THÀNH HÔN</span>
+                            <span id="event2Label">LỄ THÀNH HÔN</span>
                         </div>
                         <div class="inv-event-line"></div>
                         <div class="inv-event-details">
-                            <p class="inv-event-time">10h00 - Chủ Nhật</p>
-                            <p class="inv-event-date">22.03.2026</p>
-                            <p class="inv-event-lunar">( Tức ngày 04 Tháng 02 Năm Bính Ngọ )</p>
+                            <p class="inv-event-time" id="event2Time">10h00 - Chủ Nhật</p>
+                            <p class="inv-event-date" id="event2Date">22.03.2026</p>
+                            <p class="inv-event-lunar" id="event2Lunar">( Tức ngày 04 Tháng 02 Năm Bính Ngọ )</p>
                         </div>
                     </div>
                 </div>
@@ -232,10 +232,10 @@
                 <!-- Location Box -->
                 <div class="inv-location" data-aos="fade-up">
                     <div class="inv-location-inner">
-                        <p class="inv-location-title">TẠI: TƯ GIA NHÀ TRAI</p>
-                        <p class="inv-location-address">Số nhà 52, ngõ 55 Hoa Diêm</p>
-                        <p class="inv-location-address">TDP. Mai Diêm, xã Thái Thụy, tỉnh Hưng Yên</p>
-                        <a href="https://maps.app.goo.gl/heBcSBLwfc51MSUw9?g_st=ipc" class="inv-map-btn" target="_blank">
+                        <p class="inv-location-title" id="locationTitle">TẠI: TƯ GIA NHÀ TRAI</p>
+                        <p class="inv-location-address" id="locationAddr1">Số nhà 52, ngõ 55 Hoa Diêm</p>
+                        <p class="inv-location-address" id="locationAddr2">TDP. Mai Diêm, xã Thái Thụy, tỉnh Hưng Yên</p>
+                        <a id="mapLink" href="https://maps.app.goo.gl/heBcSBLwfc51MSUw9?g_st=ipc" class="inv-map-btn" target="_blank">
                             XEM CHỈ ĐƯỜNG
                         </a>
                     </div>
@@ -442,6 +442,18 @@
                 <div class="gallery-item" onclick="openLightbox(5)">
                     <img src="images/gallery-6.jpg" alt="Gallery 6" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=400'">
                 </div>
+                <div class="gallery-item" onclick="openLightbox(6)">
+                    <img src="images/gallery-7.jpg" alt="Gallery 7">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(7)">
+                    <img src="images/gallery-8.jpg" alt="Gallery 8">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(8)">
+                    <img src="images/gallery-9.jpg" alt="Gallery 9">
+                </div>
+                <div class="gallery-item" onclick="openLightbox(9)">
+                    <img src="images/gallery-10.jpg" alt="Gallery 10">
+                </div>
             </div>
         </div>
 
@@ -467,7 +479,7 @@
         <div class="footer-overlay"></div>
         <div class="footer-content">
             <p class="thank-you script">Thank You!</p>
-            <p class="footer-message">Chúng mình xin được gửi đến anh/chị/em/bạn chiếc thiệp cưới online thay một lời mời chân thành. Rất mong sự hiện diện của mọi người để cùng chung vui và chúc phúc cho chúng mình trong ngày trọng đại.</p>
+            <p class="footer-message" id="footerMessage">Chúng mình xin được gửi đến anh/chị/em/bạn chiếc thiệp cưới online thay một lời mời chân thành. Rất mong sự hiện diện của mọi người để cùng chung vui và chúc phúc cho chúng mình trong ngày trọng đại.</p>
             
         </div>
     </footer>
