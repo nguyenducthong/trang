@@ -40,8 +40,8 @@ const SIDE_CONFIG = {
         event2Time: '10h00 - Chủ Nhật',
         event2Date: '22.03.2026',
         event2Lunar: '( Tức ngày 04 Tháng 02 Năm Bính Ngọ )',
-        locationTitle: 'TẠI: NHÀ VĂN HÓA THÔN NGỌC THAN',
-        locationAddr1: 'Nhà văn hóa thôn Ngọc Than',
+        locationTitle: 'TẠI: NHÀ GÁI',
+        locationAddr1: 'Nhà Văn Hóa Thôn Ngọc Than',
         locationAddr2: 'Xã Kiều Phú, TP. Hà Nội',
         mapUrl: 'https://www.google.com/maps?q=XJVH+C2X+Nh%C3%A0+V%C4%83n+Ho%C3%A1+Th%C3%B4n+Ng%E1%BB%8Dc+Than,+L%C3%A0ng+ngh%E1%BB%81+m%E1%BB%99c+Ng%E1%BB%8Dc+Than,+Qu%E1%BB%91c+Oai,+H%C3%A0+N%E1%BB%99i&ftid=0x313451fc03d23ccb:0x246b4c40e908b5b6&entry=gps',
         countdownDate: new Date(2026, 2, 22, 10, 0, 0),
@@ -82,8 +82,9 @@ function initSide() {
 
     fields.forEach(function(id) {
         const el = document.getElementById(id);
-        if (el && currentSideConfig[id]) {
+        if (el && id in currentSideConfig) {
             el.textContent = currentSideConfig[id];
+            el.style.display = currentSideConfig[id] ? '' : 'none';
         }
     });
 
@@ -116,8 +117,19 @@ function initGuestName() {
             const prefixes = ['bạn', 'anh', 'chị', 'em'];
             const matched = prefixes.find(p => nameLower.startsWith(p));
             const greeting = matched || 'bạn';
-            const self = (matched === 'anh' || matched === 'chị') ? 'chúng em' : (matched === 'em' ? 'anh chị' : 'chúng mình');
+            const self = (matched === 'anh' || matched === 'chị') ? 'chúng em' : 'chúng mình';
             footerMsg.textContent = `${self.charAt(0).toUpperCase() + self.slice(1)} xin được gửi đến ${greeting} chiếc thiệp cưới online thay một lời mời chân thành. Rất mong sự hiện diện của ${greeting} để cùng chung vui và chúc phúc cho ${self} trong ngày trọng đại.`;
+        }
+
+        // Cập nhật mô tả phần lời chúc theo xưng hô
+        const wishDesc = document.getElementById('wishSectionDesc');
+        if (wishDesc) {
+            const nameLower = guestName.toLowerCase();
+            const prefixes = ['bạn', 'anh', 'chị', 'em'];
+            const matched = prefixes.find(p => nameLower.startsWith(p));
+            const greeting = matched || 'bạn';
+            const self = (matched === 'anh' || matched === 'chị') ? 'chúng em' : 'chúng mình';
+            wishDesc.textContent = `${self.charAt(0).toUpperCase() + self.slice(1)} rất chờ đón sự kiện trọng đại này của cuộc đời. Xin vui lòng xác nhận sự tham dự của ${greeting} trong tiệc cưới để ${self} có thể chuẩn bị đón tiếp chu đáo nhất! Trân trọng!`;
         }
     } else {
         // Ẩn hoặc hiển thị text mặc định nếu không có tên
