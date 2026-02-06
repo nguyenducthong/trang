@@ -414,6 +414,7 @@ body {
     text-align: center;
     color: white;
     padding: 20px;
+    margin-top: 280px;
 }
 
 .save-the-date {
@@ -449,7 +450,7 @@ body {
 .couple-names-hero .amp {
     font-family: var(--font-script);
     font-size: 60px;
-    color: var(--primary-color);
+    color: white;
     display: block;
     margin: 5px 0;
 }
@@ -1079,6 +1080,7 @@ section {
     padding: 20px;
     width: 320px;
     box-shadow: var(--shadow);
+    overflow: visible;
 }
 
 .calendar-header {
@@ -1171,7 +1173,8 @@ section {
     color: transparent;
     -webkit-text-stroke: 2px var(--primary-color);
     animation: heartPulse 1.2s ease-in-out infinite;
-    z-index: 0;
+    z-index: 2;
+    overflow: visible;
 }
 
 .calendar-days span.wedding-day::after {
@@ -1963,10 +1966,13 @@ section {
 .wishes-list-inner {
     display: flex;
     flex-direction: column;
+}
+
+.wishes-list-inner.scrolling {
     animation: autoScroll 15s linear infinite;
 }
 
-.wishes-list:hover .wishes-list-inner {
+.wishes-list:hover .wishes-list-inner.scrolling {
     animation-play-state: paused;
 }
 

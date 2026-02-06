@@ -225,6 +225,19 @@ function initMusicPlayer() {
     const playIndicator = document.getElementById('playIndicator');
 
     if (musicBtn && bgMusic) {
+        // Tự động phát nhạc khi mở trang
+        bgMusic.play().then(() => {
+            musicBtn.classList.add('playing');
+        }).catch(() => {
+            // Trình duyệt chặn autoplay, đợi user tương tác
+            document.addEventListener('click', function autoPlay() {
+                bgMusic.play().then(() => {
+                    musicBtn.classList.add('playing');
+                }).catch(() => {});
+                document.removeEventListener('click', autoPlay);
+            }, { once: true });
+        });
+
         // Update indicator icon
         function updateIndicator(isPlaying) {
             if (playIndicator) {
@@ -496,6 +509,8 @@ async function loadWishesFromGoogleSheets() {
             });
             // Duplicate content for seamless auto-scroll loop
             duplicateWishesForLoop();
+            // Bật auto-scroll sau khi có dữ liệu
+            wishesListInner.classList.add('scrolling');
         } else {
             if (wishesListInner) {
                 wishesListInner.innerHTML = '<p style="text-align:center; color: rgba(255,255,255,0.7);">Chưa có lời chúc nào. Hãy là người đầu tiên!</p>';
