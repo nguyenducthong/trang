@@ -5,7 +5,8 @@
       "WebFetch(domain:nguyenducthong.github.io)",
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\nThêm og:image size và meta description cho link preview\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(git push)"
+      "Bash(git push)",
+      "Bash(powershell -Command \"[Convert]::ToBase64String\\([System.Text.Encoding]::UTF8.GetBytes\\(''<svg xmlns=''''http://www.w3.org/2000/svg'''' width=''''24'''' height=''''24'''' viewBox=''''0 0 24 24'''' fill=''''none'''' stroke=''''#870909'''' stroke-width=''''1.5''''><path d=''''M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z''''/></svg>''\\)\\)\")"
     ]
   }
 }
