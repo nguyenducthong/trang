@@ -1173,15 +1173,15 @@ section {
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    width: 36px;
-    height: 36px;
+    width: 42px;
+    height: 42px;
     background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHdpZHRoPScyNCcgaGVpZ2h0PScyNCcgdmlld0JveD0nMCAwIDI0IDI0JyBmaWxsPSdub25lJyBzdHJva2U9JyM4NzA5MDknIHN0cm9rZS13aWR0aD0nMS41Jz48cGF0aCBkPSdNMjAuODQgNC42MWE1LjUgNS41IDAgMCAwLTcuNzggMEwxMiA1LjY3bC0xLjA2LTEuMDZhNS41IDUuNSAwIDAgMC03Ljc4IDcuNzhsMS4wNiAxLjA2TDEyIDIxLjIzbDcuNzgtNy43OCAxLjA2LTEuMDZhNS41IDUuNSAwIDAgMCAwLTcuNzh6Jy8+PC9zdmc+");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     -webkit-animation: heartPulse 1.2s ease-in-out infinite;
     animation: heartPulse 1.2s ease-in-out infinite;
-    z-index: 2;
+    z-index: 1;
 }
 
 .calendar-days span.wedding-day::after {
@@ -1189,9 +1189,12 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     color: var(--primary-color);
-    z-index: 1;
+    font-size: 13px;
+    font-weight: 700;
+    z-index: 2;
 }
 
 @-webkit-keyframes heartPulse {
