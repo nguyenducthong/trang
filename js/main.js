@@ -33,7 +33,7 @@ const SIDE_CONFIG = {
     },
     gai: {
         event1Label: 'TIỆC CƯỚI NHÀ GÁI',
-        event1Time: '16h00 - Thứ Bảy',
+        event1Time: '17h00 - Thứ Bảy',
         event1Date: '21.03.2026',
         event1Lunar: '( Tức ngày 03 Tháng 02 Năm Bính Ngọ )',
         event2Label: 'LỄ THÀNH HÔN',
