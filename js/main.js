@@ -525,16 +525,16 @@ async function loadWishesFromGoogleSheets() {
 }
 
 // Duplicate wishes for seamless auto-scroll loop
-function duplicateWishesForLoop() {
-    const wishesListInner = document.getElementById('wishesListInner');
-    if (!wishesListInner) return;
+// function duplicateWishesForLoop() {
+//     const wishesListInner = document.getElementById('wishesListInner');
+//     if (!wishesListInner) return;
 
-    const originalItems = wishesListInner.querySelectorAll('.wish-item');
-    originalItems.forEach(item => {
-        const clone = item.cloneNode(true);
-        wishesListInner.appendChild(clone);
-    });
-}
+//     const originalItems = wishesListInner.querySelectorAll('.wish-item');
+//     originalItems.forEach(item => {
+//         const clone = item.cloneNode(true);
+//         wishesListInner.appendChild(clone);
+//     });
+// }
 
 // Thêm lời chúc vào DOM
 function addWishToDOM(wish, prepend = false) {
